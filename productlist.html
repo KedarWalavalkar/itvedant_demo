@@ -1,0 +1,42 @@
+<!DOCTYPE html> {% extends 'base.html' %}
+<html>
+
+<head>
+
+    <head>
+        <title>
+            List users
+        </title>
+    </head>
+
+    <body>
+        {%block kedar%}
+        <table border=1>
+            <tr>
+                <th>ID</th>
+                <th>Product name</th>
+                <th>product price</th>
+                <th>product description</th>
+                <th>pro_category_name</th>
+                <th colspan="2">Action</th>
+            </tr>
+            {% for i in ul %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.pro_name}}</td>
+                <td>{{i.pro_price}}</td>
+                <td>{{i.pro_dscript}}</td>
+                <td>{{i.pro_category_name}}</td>
+                {% if request.session.admin is not none %}
+                <td><a href="deleteproduct/{{i.id}}">delete</a></td>
+                {%endif%}
+                <td><a href='editproduct?id={{i.id}}'>edit</a></td>
+                <!-- editproduct?name -->
+            </tr>
+            {% endfor %}
+        </table>
+        {%endblock%}
+
+    </body>
+
+</html>
